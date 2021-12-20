@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.Produtos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Produtos">
+          <Key>
+            <PropertyRef Name="IDProduto" />
+          </Key>
+          <Property Name="IDProduto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Produto" Type="char" MaxLength="30" />
+          <Property Name="Categoria" Type="char" MaxLength="20" />
+          <Property Name="QtdeEstoque" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Preco" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.Usuarios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomeLogin" Type="char" MaxLength="30" />
+          <Property Name="Senha" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="Produtos" EntityType="Self.Produtos" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Produtos].[IDProduto] AS [IDProduto], 
+[Produtos].[Produto] AS [Produto], 
+[Produtos].[Categoria] AS [Categoria], 
+[Produtos].[QtdeEstoque] AS [QtdeEstoque], 
+[Produtos].[Preco] AS [Preco]
+FROM [dbo].[Produtos] AS [Produtos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Usuarios].[IDUsuario] AS [IDUsuario], 
+[Usuarios].[NomeLogin] AS [NomeLogin], 
+[Usuarios].[Senha] AS [Senha]
+FROM [dbo].[Usuarios] AS [Usuarios]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Produtos">
+          <Key>
+            <PropertyRef Name="IDProduto" />
+          </Key>
+          <Property Name="IDProduto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Produto" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Categoria" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="QtdeEstoque" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Preco" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeLogin" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Senha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Produtos" EntityType="Self.Produtos" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
+          <EntitySetMapping Name="Produtos">
+            <EntityTypeMapping TypeName="masterModel.Produtos">
+              <MappingFragment StoreEntitySet="Produtos">
+                <ScalarProperty Name="IDProduto" ColumnName="IDProduto" />
+                <ScalarProperty Name="Produto" ColumnName="Produto" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="QtdeEstoque" ColumnName="QtdeEstoque" />
+                <ScalarProperty Name="Preco" ColumnName="Preco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="masterModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="NomeLogin" ColumnName="NomeLogin" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+﻿@model Produtoitau.Models.Produtos
+
+@{
+    ViewBag.Title = "Produtos";
+}
+
+<h2>Produtos</h2>
+@using (Html.BeginForm("IDProduto", "Produto", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>@Html.LabelFor(a => a.IDProduto)</td>
+            <td>@Html.LabelFor(a => a.Produto)</td>
+            <td>@Html.LabelFor(a => a.Preco)</td>
+            <td>@Html.LabelFor(a => a.QtdeEstoque)</td>
+            <td>@Html.LabelFor(a => a.Categoria)</td>
+        </tr>
+        <tr>
+            <td> @Html.DisplayFor(a => a.IDProduto)</td>
+            <td> @Html.DisplayFor(a => a.Produto) </td>
+            <td> @Html.DisplayFor(a => a.Preco) </td>
+            <td> @Html.DisplayFor(a => a.QtdeEstoque) </td>
+            <td> @Html.DisplayFor(a => a.Categoria) </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Alterar" />
+                <input type="submit" value="Incluir" />
+            </td>
+        </tr>
+    </table>
+
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+}
