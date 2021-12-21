@@ -64,12 +64,22 @@ namespace Produtoitau.Controllers
 
         public ActionResult Produtos()
         {
-   
+
             using (masterEntities dc = new masterEntities())
             {
 
-                var p = dc.Produtos.Where(a => a.IDProduto > 0).OrderByDescending(a => a.Produto).ThenBy(a => a.IDProduto).FirstOrDefault();
+                List<Produtos> lista_oper = new List<Produtos>();
 
+                int i = 0;
+                //Funcionando com 1 caso só
+                //var p = dc.Produtos.Where(a => a.IDProduto > 0).OrderByDescending(a => a.Produto).ThenBy(a => a.IDProduto).FirstOrDefault();
+                var p = dc.Produtos.Where(a => a.IDProduto > i).FirstOrDefault();
+
+                //while (p != null && p.IDProduto > i && p.IDProduto != p.IDProduto)
+
+                //    lista_oper.Add(p);
+                //    i++;
+                  
                 return View(p);
             }
 
